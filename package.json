@@ -7,7 +7,7 @@
   "dependencies": {
     "es6-error": "^4.0.2",
     "minimist": "^1.2.0",
-    "option-help": "^0.5.3",
+    "option-help": "^0.5.4",
     "prompt": "^1.0.0"
   },
   "devDependencies": {

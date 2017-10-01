@@ -1,6 +1,6 @@
 
 import Minimist = require("minimist");
-const OptionHelp: any = require("option-help"); // TBD: create typings
+import OptionHelp = require("option-help");
 import { CommandSpec } from './CommandSpec';
 import { NamedCommand } from './NamedCommand';
 import * as Errors from './errors';
