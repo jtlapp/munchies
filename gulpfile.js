@@ -1,32 +1,24 @@
 "use strict";
 
 const gulp = require('gulp');
-const ts = require("gulp-typescript")
-const tsconfig = require("./tsconfig");
-const compilerOptions = tsconfig.compilerOptions;
-compilerOptions.rootDir = __dirname;
+const shell = require('gulp-shell');
+const del = require('del');
 
-gulp.task("watch", () => {
-    gulp.watch('src/**/*.ts', ["build"]);
+gulp.task("build",
+    shell.task('tsc', { 
+        cwd: __dirname
+    })
+);
+
+gulp.task("clean", () => {
+    return del(['build/**/*']);
 });
 
-gulp.task("build", [
-    'build-src',
-    'build-demo'
-]);
-
-gulp.task("build-src", () => {
-    console.log("building src/")
-    return gulp.src(['src/**/*.ts'])
-    .pipe(ts(compilerOptions))
-    .pipe(gulp.dest('build/src'))
-})
-
-gulp.task("build-demo", () => {
-    console.log("building demo/")
-    return gulp.src(['demo/**/*.ts'])
-    .pipe(ts(compilerOptions))
-    .pipe(gulp.dest('build/demo'))
-})
+gulp.task("watch", () => {
+    gulp.watch([
+        'src/**/*.ts',
+        'demo/**/*.ts'
+    ], [ "build" ]);
+});
 
 gulp.task("default", ["watch"]);

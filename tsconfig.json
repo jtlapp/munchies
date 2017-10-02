@@ -9,6 +9,7 @@
         "strictNullChecks": true,
         "noUnusedLocals": true,
         "outDir": "build",
-        "declaration": true
+        "declaration": true,
+        "sourceMap": true
     }
 }
