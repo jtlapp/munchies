@@ -35,7 +35,7 @@ class SayHelloCmd extends NamedCommand {
         args: Minimist.ParsedArgs,
         next: (err?: Error) => void
     ) {
-        console.log("Well hello there!");
+        this.printLn("Well hello there!");
         next();
     }
 }

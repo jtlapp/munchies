@@ -1,13 +1,12 @@
 {
-  "name": "munchy",
+  "name": "munchies",
   "version": "0.1.0",
   "description": "Typescript framework for CLI tools implementing multiple commands",
   "main": "build/src/index",
   "types": "build/src/index",
   "dependencies": {
-    "es6-error": "^4.0.2",
     "minimist": "^1.2.0",
-    "option-help": "^0.5.4",
+    "option-help": "^0.5.6",
     "prompt": "^1.0.0"
   },
   "devDependencies": {
@@ -24,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jtlapp/munchy.git"
+    "url": "git+https://github.com/jtlapp/munchies.git"
   },
   "keywords": [
     "CLI",
@@ -36,7 +35,7 @@
   "author": "Joseph T. Lapp",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jtlapp/munchy/issues"
+    "url": "https://github.com/jtlapp/munchies/issues"
   },
-  "homepage": "https://github.com/jtlapp/munchy#readme"
+  "homepage": "https://github.com/jtlapp/munchies#readme"
 }

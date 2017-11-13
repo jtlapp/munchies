@@ -1,16 +1,7 @@
 
-//import ExtendableError from 'es6-error'; // awaiting fix for es6-error
-
-export class ExtendableError extends (<typeof Error>require('es6-error'))
-{
-    constructor(...args: any[]) {
-        super(...args);
-    }
-}
-
 ///////////////////////////////////////////////////////////////////////////////
 
-export class CommandError extends ExtendableError
+export class CommandError extends Error
 {
     /**
      * Error that prevents the command from running.

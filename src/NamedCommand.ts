@@ -64,10 +64,8 @@ export abstract class NamedCommand
      * @param next The next `function (err)` to call. The method must call this function when done and must not call it more than once.
      */
     
-    abstract doCommand(
-        args: Minimist.ParsedArgs,
-        next: (err?: Error) => void
-    ): void;
+    abstract doCommand(args: Minimist.ParsedArgs,next: (err?: Error) => void)
+        : void;
     
     /**
      * Returns help when `-h` or `--help` follows the command name on the command line. By default, the method returns only the syntax and summary lines that `getInfo()` provides. Override this method to produce more extensive help for the command. The output gets wrapped at a width configured for CommandRunner.
@@ -94,6 +92,33 @@ export abstract class NamedCommand
     
     error(message: string, ...formatArgs: any[]): Errors.CommandError {
         return new Errors.CommandError(Util.format(message, ...formatArgs));
+    }
+
+    /**
+     * Shorthand method for writing text to stdout. The method accepts `Util.format()` arguments. That is, the first argument is a string that may contain `%` formatting codes, and the following arguments replace the codes in the string.
+     *
+     * This is a support method for implementations of `doCommand()`.
+     *
+     * @param text Arbitrary text to write, optionally using the `%` formatting codes of `Util.format()`.
+     * @param formatArgs Optional arguments that replace `%` formatting codes in `text`.
+     */
+    
+    print(text: string, ...formatArgs: any[]): void {
+        process.stdout.write(Util.format(text, ...formatArgs));
+    }
+    
+    /**
+     * Shorthand method for writing a line of text to stdout. Appends '\n' to the provided string. The method accepts `Util.format()` arguments. That is, the first argument is a string that may contain `%` formatting codes, and the following arguments replace the codes in the string.
+     *
+     * This is a support method for implementations of `doCommand()`.
+     *
+     * @param text Line of text to write, optionally using the `%` formatting codes of `Util.format()`. Outputs a LF if text is not provided.
+     * @param formatArgs Optional arguments that replace `%` formatting codes in `text`.
+     */
+    
+    printLn(text?: string, ...formatArgs: any[]): void {
+        text = (text === undefined ? '\n' : text + '\n');
+        this.print(text, ...formatArgs);
     }
     
     /**

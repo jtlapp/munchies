@@ -234,10 +234,11 @@ export class CommandRunner
      */
     
     getHelpSummaryEntry(spec: CommandSpec, rightMargin: number): string {
-        let syntax = spec._syntax.substr(spec._name.length);
-        let summary = OptionHelp.wrapText('  '+ spec._summary,
+        const syntax = OptionHelp.wrapText(spec._name.toUpperCase() +
+                spec._syntax.substr(spec._name.length), rightMargin, 4);
+        const summary = OptionHelp.wrapText('  '+ spec._summary,
                             rightMargin, true)
-        return `${spec._name.toUpperCase()}${syntax}\n${summary}\n`;        
+        return `${syntax}\n${summary}\n`;        
     }
     
     /**
